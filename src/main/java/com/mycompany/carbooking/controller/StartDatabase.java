@@ -5,23 +5,24 @@ import TemporalDB.Cars;
 import TemporalDB.Clients;
 import TemporalDB.Garages;
 import TemporalDB.Reserves;
-import com.mycompany.carbooking.model.*;
-import java.util.ArrayList;
+import com.mycompany.carbooking.model.Agency;
+import com.mycompany.carbooking.model.Car;
+import com.mycompany.carbooking.model.Client;
+import com.mycompany.carbooking.model.Garage;
+import com.mycompany.carbooking.model.Reserve;
 import java.util.HashMap;
 
 /**
  *
- * @author PC
+ * @author Andres Felipe Franco
  */
-public class CarBooking {
-
-    public static void main() {
-        
+public class StartDatabase {
+    
+    public StartDatabase() {
         startDB();
-        
     }
     
-    private static void startDB(){
+    private static void startDB() {
         Cars.cars.add(new Car("ASJ-051", "Red", "Toyota Corolla", "Toyota", 120.4f));
         Cars.cars.add(new Car("IJE-877", "Blue", "Honda Civic", "Honda", 200.0f));
         Cars.cars.add(new Car("WRJ-998", "Black", "Ford Mustang", "Ford", 280.5f));
@@ -50,16 +51,12 @@ public class CarBooking {
         
         Reserves.reserves.add(new Reserve(1, "04/08/2024", "05/08/2024", Agencies.agencies.get(0)));
         Reserves.reserves.add(new Reserve(2, "20/09/2024", "30/09/2024", Agencies.agencies.get(4)));
-        ArrayList<Car> carList1 = new ArrayList<>();
-        carList1.add(Cars.cars.get(0));
-        carList1.add(Cars.cars.get(1));
-        carList1.add(Cars.cars.get(2));
-        ArrayList<Car> carList2 = new ArrayList<>();
-        carList2.add(Cars.cars.get(3));
-        carList2.add(Cars.cars.get(4));
-        carList2.add(Cars.cars.get(5));
-        Reserves.reserves.get(0).addCars(carList1);
-        Reserves.reserves.get(1).addCars(carList2);
+        Reserves.reserves.get(0).addCars(Cars.cars.get(0));
+        Reserves.reserves.get(0).addCars(Cars.cars.get(1));
+        Reserves.reserves.get(0).addCars(Cars.cars.get(2));
+        Reserves.reserves.get(1).addCars(Cars.cars.get(3));
+        Reserves.reserves.get(1).addCars(Cars.cars.get(4));
+        Reserves.reserves.get(1).addCars(Cars.cars.get(5));
         
         Clients.clients.add(new Client(1, "Andres", "AS156", "Address 1", "3115060287"));
         Clients.clients.add(new Client(2, "Sofia", "SF585", "Address 2", "3121881865"));

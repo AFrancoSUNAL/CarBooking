@@ -6,14 +6,16 @@ package com.mycompany.carbooking.model;
  */
 public class Car {
     
-    private String id;
-    private String color;
-    private String model;
-    private String brand;
-    private float bookPrice;
+    // Properties
+    private final String id;
+    private final String color;
+    private final String model;
+    private final String brand;
+    private final float bookPrice;
     private float fuelPorcentage;
     private boolean available;
-
+    
+    // Constructor
     public Car(String id, String color, String model, String brand, float bookPrice) {
         this.id = id;
         this.color = color;
@@ -24,21 +26,28 @@ public class Car {
         this.available = true;
     }
     
+    // Methods    
     public void reload() {
         fuelPorcentage = 100f;
         System.out.println("Tank reloaded");
     }
     
-    public void getInfo() {
-        System.out.println("=== Car ==="
-                + "Model: %s"
-                + "Brand: %s"
-                + "Color: %s"
-                + "Id: %s"
-                + "Price: %s"
-                + "Available: %s".formatted(model, brand, color, id, bookPrice, available));
+    public void setAvailable(boolean value){
+        this.available = value;
     }
     
+    public void getInfo() {
+        System.out.println(("""
+                            === Car ===
+                            Model: %s
+                            Brand: %s
+                            Color: %s
+                            Id: %s
+                            Price: %s
+                            Available: %s""").formatted(model, brand, color, id, bookPrice, available));
+    }
+    
+    // Get Methods
     public String getId() {
         return id;
     }
@@ -46,5 +55,27 @@ public class Car {
     public float getBookPrice() {
         return bookPrice;
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public float getFuelPorcentage() {
+        return fuelPorcentage;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+    
+    
     
 }

@@ -1,5 +1,7 @@
 package com.mycompany.carbooking.model;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Andres Felipe Franco
@@ -27,9 +29,19 @@ public class Car {
     }
     
     // Methods    
-    public void reload() {
+    public boolean reload() {
+        System.out.println("Do you want to readoad? y/n: ");
+        Scanner read = new Scanner(System.in);
+        if("n".equals(read.next())){
+            return false;
+        }
         fuelPorcentage = 100f;
         System.out.println("Tank reloaded");
+        return true;
+    }
+    
+    public void setFuelPorcentage(float porcentage){
+        this.fuelPorcentage = porcentage;
     }
     
     public void setAvailable(boolean value){

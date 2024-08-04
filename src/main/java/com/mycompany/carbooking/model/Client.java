@@ -33,7 +33,7 @@ public class Client {
         // Create a new car reservation
         
         Reserve reserve = new Reserve(id, startDay, endDay, agency);
-        System.out.println("Total cost: " + reserve.getTotalPrice(cars));
+        System.out.println("Total cost: " + reserve.calcTotal(cars));
         System.out.println("Do you want continue? y/n: ");
         Scanner read = new Scanner(System.in);
         
@@ -43,10 +43,19 @@ public class Client {
         }
         
         for(Car car : cars){
+            
             if(!car.isAvailable()) {
                 System.out.println("Sorry, the car " + car.getId() + " is not available.");
                 return;
             }
+            
+            if(car.getFuelPorcentage() < 25f){
+                System.out.println("This car requieres a fuel recharge");
+                if(!car.reload()) {
+                    return;
+                }
+            }
+            
             car.setAvailable(false);
             reserve.addCars(car);
         }

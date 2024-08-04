@@ -1,6 +1,7 @@
 package com.mycompany.carbooking.model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Reserve {
         this.startDate = startDate;
         this.endDate = endDate;
         this.agency = agency;
-        this.totalPrice = calcTotal();
+        this.totalPrice = agency.getPriceService();
         this.isFinished = false;
     }
     
@@ -38,24 +39,18 @@ public class Reserve {
         System.out.println("Reserve closed successfully");
     }
     
-    private float calcTotal() {
-        float totalCarCost = 0f;
-        for(Car car : cars) {
-            totalCarCost += car.getBookPrice();
-        }        
-        return agency.getPriceService() + totalCarCost;
-    }
-    
     public void deliverCar(Car car) {
         for(Car element : cars) {
             if(element.equals(car)) { 
                 car.setAvailable(true);
+                Random random = new Random();
+                element.setFuelPorcentage(random.nextFloat(100));
                 return;
             }
         }
     }
     
-    public float getTotalPrice(ArrayList<Car> cars) {
+    public float calcTotal(ArrayList<Car> cars) {
         for(Car car : cars) {
             totalPrice += car.getBookPrice();
         }

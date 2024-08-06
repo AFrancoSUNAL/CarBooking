@@ -1,9 +1,13 @@
 package com.mycompany.carbooking.view;
 
-import TemporalDB.Cars;
 import com.mycompany.carbooking.controller.StartDatabase;
-import com.mycompany.carbooking.model.Car;
-import javax.swing.table.DefaultTableModel;
+import com.mycompany.carbooking.view.agency.AgencyIndex;
+import com.mycompany.carbooking.view.car.CarIndex;
+import com.mycompany.carbooking.view.car.CarDetails;
+import com.mycompany.carbooking.view.client.ClientIndex;
+import com.mycompany.carbooking.view.garage.GarageIndex;
+import com.mycompany.carbooking.view.reserve.ReserveIndex;
+import javax.swing.JPanel;
 
 /**
  *
@@ -15,68 +19,137 @@ public class Dashboard extends javax.swing.JFrame {
     
     public Dashboard() {
         initComponents();
-                
-        DefaultTableModel model = new DefaultTableModel();
-        
-        String[] columnNames = {"Id", "Color", "Model", "Brand", "BookPrice", "FuelPorcentage", "Available"};
-        model.setColumnIdentifiers(columnNames);
-        
-        jTable1.setModel(model);
-        
-        for(Car car : Cars.cars) {
-            model.addRow(new Object[]{
-                car.getId(),
-                car.getColor(),
-                car.getModel(),
-                car.getBrand(),
-                car.getBookPrice(),
-                car.getFuelPorcentage(),
-                car.isAvailable()
-            });
-        }
+        this.setLocationRelativeTo(null);
+        ClientIndex clientIndex = new ClientIndex();
+        printPanel(clientIndex, this.pnlDisplay);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        pnlButtons = new javax.swing.JPanel();
+        btnAgency = new javax.swing.JButton();
+        btnGarage = new javax.swing.JButton();
+        btnCar = new javax.swing.JButton();
+        btnClient = new javax.swing.JButton();
+        btnReserve = new javax.swing.JButton();
+        pnlDisplay = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        pnlButtons.setBackground(new java.awt.Color(122, 149, 181));
+
+        btnAgency.setText("Agency");
+        btnAgency.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgencyActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
-                .addContainerGap())
+        btnGarage.setText("Garage");
+        btnGarage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGarageActionPerformed(evt);
+            }
+        });
+
+        btnCar.setText("Car");
+        btnCar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarActionPerformed(evt);
+            }
+        });
+
+        btnClient.setText("Client");
+        btnClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientActionPerformed(evt);
+            }
+        });
+
+        btnReserve.setText("Reserve");
+        btnReserve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReserveActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlButtonsLayout = new javax.swing.GroupLayout(pnlButtons);
+        pnlButtons.setLayout(pnlButtonsLayout);
+        pnlButtonsLayout.setHorizontalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGarage, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgency, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClient, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-                .addContainerGap())
+        pnlButtonsLayout.setVerticalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(btnAgency, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(btnGarage, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(btnCar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnClient, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
+
+        getContentPane().add(pnlButtons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 560));
+
+        pnlDisplay.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout pnlDisplayLayout = new javax.swing.GroupLayout(pnlDisplay);
+        pnlDisplay.setLayout(pnlDisplayLayout);
+        pnlDisplayLayout.setHorizontalGroup(
+            pnlDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 790, Short.MAX_VALUE)
+        );
+        pnlDisplayLayout.setVerticalGroup(
+            pnlDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 560, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pnlDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 790, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgencyActionPerformed
+        AgencyIndex agencyIndex = new AgencyIndex();
+        printPanel(agencyIndex, this.pnlDisplay);
+    }//GEN-LAST:event_btnAgencyActionPerformed
+
+    private void btnClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientActionPerformed
+        ClientIndex clientIndex = new ClientIndex();
+        printPanel(clientIndex, this.pnlDisplay);
+    }//GEN-LAST:event_btnClientActionPerformed
+
+    private void btnGarageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGarageActionPerformed
+        GarageIndex garageIndex = new GarageIndex();
+        printPanel(garageIndex, this.pnlDisplay);
+    }//GEN-LAST:event_btnGarageActionPerformed
+
+    private void btnCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarActionPerformed
+        CarIndex carIndex = new CarIndex();
+        printPanel(carIndex, this.pnlDisplay);
+    }//GEN-LAST:event_btnCarActionPerformed
+
+    private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
+        ReserveIndex reserveIndex = new ReserveIndex();
+        printPanel(reserveIndex, this.pnlDisplay);
+    }//GEN-LAST:event_btnReserveActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -109,9 +182,24 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void printPanel(JPanel panel, JPanel container){
+        panel.setSize(this.pnlDisplay.getSize());
+        panel.setLocation(0, 0);
+        
+        container.removeAll();
+        container.add(panel);
+        container.revalidate();
+        container.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton btnAgency;
+    private javax.swing.JButton btnCar;
+    private javax.swing.JButton btnClient;
+    private javax.swing.JButton btnGarage;
+    private javax.swing.JButton btnReserve;
+    private javax.swing.JPanel pnlButtons;
+    private javax.swing.JPanel pnlDisplay;
     // End of variables declaration//GEN-END:variables
 }

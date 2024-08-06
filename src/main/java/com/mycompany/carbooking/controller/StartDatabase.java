@@ -17,9 +17,14 @@ import java.util.HashMap;
  * @author Andres Felipe Franco
  */
 public class StartDatabase {
+        
+    private static boolean isLoaded = false;
     
     public StartDatabase() {
-        startDB();
+        if(!isLoaded) {
+            startDB();
+        }
+        isLoaded = true;
     }
     
     private static void startDB() {

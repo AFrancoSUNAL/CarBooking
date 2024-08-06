@@ -8,9 +8,9 @@ public class Agency {
     
     // Properties
     private final int id;
-    private final String agencyName;
-    private final String address;
-    private final float priceService;
+    private String agencyName;
+    private String address;
+    private float priceService;
 
     // Constructor
     public Agency(int id, String agencyName, String address, float priceService) {
@@ -47,4 +47,15 @@ public class Agency {
         return priceService;
     }
     
+    public void setAgencyName(String name) {
+        this.agencyName = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPriceService(float priceService) {
+        this.priceService = priceService;
+    }    
 }

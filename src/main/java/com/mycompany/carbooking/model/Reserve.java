@@ -96,6 +96,9 @@ public class Reserve {
     public boolean isIsFinished() {
         return isFinished;
     }
-    
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
     
 }
